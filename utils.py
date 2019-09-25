@@ -55,8 +55,7 @@ class ImageDataset_hdf5(data.Dataset):
 
         self.train = train
 
-        source = '/mnt/datasets/pcam/'
-        target =  '/scratch/ssd/eteh/'
+        target = '/mnt/datasets/pcam/'
         train_x_path = 'camelyonpatch_level_2_split_train_x.h5'
         train_y_path = 'camelyonpatch_level_2_split_train_y.h5'
         valid_x_path = 'camelyonpatch_level_2_split_valid_x.h5'
@@ -64,18 +63,6 @@ class ImageDataset_hdf5(data.Dataset):
         test_x_path = 'camelyonpatch_level_2_split_test_x.h5'
         test_y_path = 'camelyonpatch_level_2_split_test_y.h5'
 
-
-        def copy_file(source, target, file_path):
-            if not os.path.exists(target + file_path):
-                print('copyfing file:', file_path)
-                copyfile(source + file_path, target + file_path)
-
-        copy_file(source, target, train_x_path)
-        copy_file(source, target, train_y_path)
-        copy_file(source, target, valid_x_path)
-        copy_file(source, target, valid_y_path)
-        copy_file(source, target, test_x_path)
-        copy_file(source, target, test_y_path)
 
         if self.train == True:
             self.transform = train_transform
