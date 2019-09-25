@@ -26,6 +26,8 @@ parser.add_argument('--wd', type=float, default=1e-3)
 parser.add_argument('--load_epoch', type=int, default=-1)
 parser.add_argument('--save_epoch', type=int, default=1)
 parser.add_argument('--tqdm_off', action='store_true', default=False)
+parser.add_argument('--dataset_path', type=str, default='/mnt/datasets/pcam/')
+
 
 args = parser.parse_args()
 save_path = 'results/%s' % (args.dataset)
@@ -120,9 +122,9 @@ def test():
     return acc
 
 if not args.is_test:
-    train_data_loader = torch.utils.data.DataLoader(dataset(dataset=args.dataset + '_' + str(args.seed), train=True), batch_size=args.batch_size, shuffle=True, num_workers=4)
+    train_data_loader = torch.utils.data.DataLoader(dataset(dataset_path=args.dataset_path, train=True), batch_size=args.batch_size, shuffle=True, num_workers=4)
 
-test_data_loader = torch.utils.data.DataLoader(dataset(dataset=args.dataset + '_' + str(args.seed), train=False), batch_size=args.batch_size, num_workers=4)
+test_data_loader = torch.utils.data.DataLoader(dataset(dataset_path=args.dataset_path, train=False), batch_size=args.batch_size, num_workers=4)
 
 class Model(nn.Module):
     def __init__(self, num_classes):

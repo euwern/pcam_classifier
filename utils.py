@@ -51,11 +51,11 @@ test_transform = t.Compose([
     ])
 
 class ImageDataset_hdf5(data.Dataset):
-    def __init__(self, dataset, train):
+    def __init__(self, dataset_path, train):
 
         self.train = train
 
-        target = '/mnt/datasets/pcam/'
+        target = dataset_path#'/mnt/datasets/pcam/'
         train_x_path = 'camelyonpatch_level_2_split_train_x.h5'
         train_y_path = 'camelyonpatch_level_2_split_train_y.h5'
         valid_x_path = 'camelyonpatch_level_2_split_valid_x.h5'
