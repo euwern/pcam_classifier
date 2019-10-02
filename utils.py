@@ -29,12 +29,9 @@ class TextLogger():
         self.file.close()
 
 train_transform = t.Compose([
-    #t.Resize((108, 108)),
-    #t.Pad(12, padding_mode='reflect'),
-    t.Resize((96, 96)),
-    t.Pad(12, padding_mode='reflect'),
-    #t.RandomCrop(96),
-    t.RandomCrop(96),
+    t.Resize((224, 224)),
+    t.Pad(32, padding_mode='reflect'),
+    t.RandomCrop(224),
     t.RandomHorizontalFlip(0.5),
     t.RandomRotation([0, 360]),
     t.ColorJitter(
@@ -45,8 +42,7 @@ train_transform = t.Compose([
     t.ToTensor(),
     ])
 test_transform = t.Compose([
-    t.Resize((96, 96)),
-    #t.Resize((224, 224)),
+    t.Resize((224, 224)),
     t.ToTensor(),
     ])
 
