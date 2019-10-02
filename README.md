@@ -11,9 +11,9 @@ In this repo, we assume the hdf5 files are downloaded under "/mnt/datasets/pcam/
 - camelyonpatch_level_2_split_test_x.h5
 - camelyonpatch_level_2_split_test_y.h5
 
-# Training
+# Training and evaluation 
 ```
-#to train
+#running the following scripts train the model for 10 epochs and evaluate the performance on the test set. 
 python train.py
 ```
 We obtained a Test Accuracy of 86.32%. 
